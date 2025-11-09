@@ -149,10 +149,34 @@ yarn cli test-against-testnet
    Duration  153.65s (transform 205ms, setup 93ms, collect 1.56s, tests 151.86s, environment 0ms, prepare 8ms)
 ```
 
-以下のコマンドでコントラクトをテストネットにデプロイする
+以下のコマンドでコントラクトを対話式でテストネットにデプロイする
 
 ```bash
 yarn cli testnet-remote
+```
+
+単にデプロイだけ行いたい場合は以下を実行する
+
+事前に環境変数を設定する
+
+```bash
+cp .env.example .env
+```
+
+```bash
+yarn cli deploy
+```
+
+以下のようになればOK!
+
+```bash
+[12:16:24.603] INFO (39506): Deploying counter contract...
+[12:17:27.488] INFO (39506): Deployed contract at address: 020050e6bdae4c9e65023a252a6aba74323c1d9c1ba6e520f00e84a5fc1c75b100f3
+[12:17:27.488] INFO (39506): Deployment transaction: 00000000c408a293e4e287285649623774b2be950bf0d385a20117ce79a99eb7315aa547
+[12:17:27.489] INFO (39506): Contract address: 020050e6bdae4c9e65023a252a6aba74323c1d9c1ba6e520f00e84a5fc1c75b100f3
+Counter contract deployed at: 020050e6bdae4c9e65023a252a6aba74323c1d9c1ba6e520f00e84a5fc1c75b100f3
+[12:17:27.489] INFO (39506): Not saving cache as sync cache was not defined
+Done in 90.16s.
 ```
 
 ## 参考文献

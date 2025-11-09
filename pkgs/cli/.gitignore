@@ -3,3 +3,4 @@ dist
 reports
 logs
 midnight-level-db
+.env
