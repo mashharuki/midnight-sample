@@ -10,6 +10,7 @@
   "scripts": {
     "contract": "yarn workspace contract",
     "cli": "yarn workspace cli",
+    "frontend": "yarn workspace frontend",
     "format": "yarn exec biome format --write .",
     "biome:check": "yarn exec biome check --write ."
   },
