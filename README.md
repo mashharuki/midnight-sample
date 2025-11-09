@@ -154,3 +154,6 @@ yarn cli test-against-testnet
 ```bash
 yarn cli testnet-remote
 ```
+
+## 参考文献
+- [ブロックエクスプローラー](https://www.midnightexplorer.com/)

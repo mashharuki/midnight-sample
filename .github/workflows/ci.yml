@@ -1,0 +1,51 @@
+name: CI
+
+on:
+	push:
+		branches:
+			- main
+	pull_request:
+		branches:
+			- main
+	workflow_dispatch:
+
+env:
+	NODE_VERSION: "20"
+	COMPACT_VERSION: "0.25.0"
+	TESTCONTAINERS_RYUK_DISABLED: "true"
+
+jobs:
+	build:
+		runs-on: ubuntu-latest
+
+		steps:
+			- name: Checkout
+				uses: actions/checkout@v4
+
+			- name: Setup Node.js
+				uses: actions/setup-node@v4
+				with:
+					node-version: ${{ env.NODE_VERSION }}
+					cache: yarn
+
+			- name: Install dependencies
+				run: yarn install --frozen-lockfile
+
+			- name: Install compact CLI
+				run: |
+					curl --proto '=https' --tlsv1.2 -LsSf https://github.com/midnightntwrk/compact/releases/latest/download/compact-installer.sh | sh
+					echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+					compact update "${COMPACT_VERSION}"
+					compact --version
+
+			- name: Compile contract
+				run: yarn workspace contract compact
+
+			- name: Contract unit tests
+				run: yarn workspace contract test
+
+			- name: Build CLI
+				run: yarn workspace cli build
+
+			- name: CLI API tests
+				run: yarn workspace cli test-api
