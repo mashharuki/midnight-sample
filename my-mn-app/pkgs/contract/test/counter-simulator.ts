@@ -60,6 +60,10 @@ export class CounterSimulator {
     return this.circuitContext.currentPrivateState;
   }
 
+  /**
+   * incrementメソッドを呼び出すメソッド
+   * @returns 
+   */
   public increment(): Ledger {
     // Update the current context to be the result of executing the circuit.
     this.circuitContext = this.contract.impureCircuits.increment(
