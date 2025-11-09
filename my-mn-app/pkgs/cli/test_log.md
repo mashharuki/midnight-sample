@@ -266,3 +266,44 @@ stdout | src/test/counter.api.test.ts > API
    Duration  200.97s (transform 180ms, setup 72ms, collect 1.11s, tests 199.62s, environment 0ms, prepare 10ms)
 
 ```
+
+# CLI のテストネット向けのユニットテストログ
+
+```bash
+ RUN  v4.0.8 /workspaces/midnight-sample/my-mn-app/pkgs/cli
+
+[08:47:56.324] INFO (52069): Test wallet seed: 1dec0dd58fbe4d3206ef960aebff95a77e09dffbd19f3e9439d23fe6de4fcdd1
+[08:47:56.327] INFO (52069): Proof server starting...
+[08:48:00.641] INFO (52069): Configuration:{"seed":"1dec0dd58fbe4d3206ef960aebff95a77e09dffbd19f3e9439d23fe6de4fcdd1","entrypoint":"","dappConfig":{"logDir":"/workspaces/midnight-sample/my-mn-app/pkgs/cli/logs/testnet-remote/2025-11-09T08:47:56.324Z.log","indexer":"https://indexer.testnet-02.midnight.network/api/v1/graphql","indexerWS":"wss://indexer.testnet-02.midnight.network/api/v1/graphql/ws","node":"https://rpc.testnet-02.midnight.network","proofServer":"http://172.17.0.1:32774"},"psMode":"testnet","cacheFileName":"1dec0dd-testnet.state"}
+[08:48:00.642] INFO (52069): Test containers started
+[08:48:00.642] INFO (52069): Setting up wallet
+[08:48:00.643] INFO (52069): File path for save file not found, building wallet from scratch
+[08:48:00.785] INFO (52069): Your wallet seed is: 1dec0dd58fbe4d3206ef960aebff95a77e09dffbd19f3e9439d23fe6de4fcdd1
+[08:48:00.786] INFO (52069): Your wallet address is: mn_shield-addr_test1mksxede6e6g85mp68levnatv3eeva0nczhmrgn9n7hgagsd8cvhsxqq78lg9phh6tzvl5efmvzqzxzlc8f4fkpncu3p7gsw7jyl22dryggu2djq9
+[08:48:00.789] INFO (52069): Your wallet balance is: 0
+[08:48:00.790] INFO (52069): Waiting to receive tokens...
+[08:48:00.808] INFO (52069): Waiting for funds. Backend lag: 0, wallet lag: 0, transactions=0
+[08:48:11.071] INFO (52069): Waiting for funds. Backend lag: 0, wallet lag: 24104, transactions=119
+[08:48:22.837] INFO (52069): Waiting for funds. Backend lag: 0, wallet lag: 0, transactions=149
+[08:48:22.838] INFO (52069): Your wallet balance is: 1047353290
+[08:48:22.893] INFO (52069): Deploying counter contract...
+[08:49:27.377] INFO (52069): Deployed contract at address: 0200a83c22cc05775912c52dfa3d4c4504c22225cd3231d1a3634ca8b87409875916
+[08:49:27.378] INFO (52069): Checking contract ledger state...
+[08:49:27.573] INFO (52069): Ledger state: 0
+[08:49:27.573] INFO (52069): Current counter value: 0
+[08:49:29.575] INFO (52069): Incrementing...
+[08:50:27.760] INFO (52069): Transaction 00000000ba8eee2293bc795e5b60d874071e75e486cb4494d75609f9a0e71b5f16c25dd3 added in block 2482886
+[08:50:27.760] INFO (52069): Checking contract ledger state...
+[08:50:27.950] INFO (52069): Ledger state: 1
+[08:50:27.951] INFO (52069): Current counter value: 1
+[08:50:27.952] INFO (52069): Not saving cache as sync cache was not defined
+[08:50:27.960] INFO (52069): Test container closing
+ ✓ src/test/counter.api.test.ts (1 test) 151857ms
+   ✓ API (1)
+     ✓ should deploy the contract and increment the counter [@slow]  125059ms
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  08:47:54
+   Duration  153.65s (transform 205ms, setup 93ms, collect 1.56s, tests 151.86s, environment 0ms, prepare 8ms)
+```

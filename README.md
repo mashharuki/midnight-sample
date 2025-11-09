@@ -132,6 +132,25 @@ Test Files  1 passed (1)
    Duration  200.97s (transform 180ms, setup 72ms, collect 1.11s, tests 199.62s, environment 0ms, prepare 10ms)
 ```
 
+さらにテストネット上でもユニットテストコードを実行するコマンド
+
+```bash
+yarn cli test-against-testnet
+```
+
+以下のようになればOK!
+
+```bash
+ ✓ src/test/counter.api.test.ts (1 test) 151857ms
+   ✓ API (1)
+     ✓ should deploy the contract and increment the counter [@slow]  125059ms
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  08:47:54
+   Duration  153.65s (transform 205ms, setup 93ms, collect 1.56s, tests 151.86s, environment 0ms, prepare 8ms)
+```
+
 以下のコマンドでコントラクトをテストネットにデプロイする
 
 ```bash
