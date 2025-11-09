@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private":true,
   "main": "index.js",
+  "type": "module",
   "license": "MIT",
   "scripts": {
     "test-api": "docker compose -f standalone.yml pull && DEBUG='testcontainers' vitest run",
